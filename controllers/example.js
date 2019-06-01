@@ -48,7 +48,7 @@ exports.update = (id, params) => {
 }
 
 exports.del = id => {
-  let res = data.find(el => {
+  let res = data.filter(el => {
     return el.id != id
   })
 
