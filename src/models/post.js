@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const schema = new mongoose.Schema({
   post: String,
   description: String,
-  Author: String,
+  author: String,
   likes: Number
 })
 

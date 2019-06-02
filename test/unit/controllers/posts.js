@@ -22,9 +22,27 @@ describe('Controllers: Posts', () => {
 
       Posts.find.withArgs({}).resolves(defaultPost)
 
-      const postController = new PostsController(Posts)
-      return postController.getAll(request, response).then(() => {
+      const postsController = new PostsController(Posts)
+      return postsController.getAll(request, response).then(() => {
         sinon.assert.calledWith(response.send, defaultPost)
+      })
+    })
+
+    it('should return 400 when an error occurs', () => {
+      const request = {}
+      const response = {
+        send: sinon.spy(),
+        status: sinon.stub()
+      }
+
+      response.status.withArgs(400).returns(response)
+      Posts.find = sinon.stub()
+      Posts.find.withArgs({}).rejects({ message: 'Error' })
+
+      const postsController = new PostsController(Posts)
+
+      return postsController.getAll(request, response).then(() => {
+        sinon.assert.calledWith(response.send, 'Error')
       })
     })
   })

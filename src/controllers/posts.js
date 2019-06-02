@@ -4,7 +4,9 @@ class PostsController {
   }
 
   getAll (req, res) {
-    return this.Posts.find({}).then(posts => res.send(posts))
+    return this.Posts.find({})
+      .then(posts => res.send(posts))
+      .catch(err => res.status(400).send(err.message))
   }
 }
 
