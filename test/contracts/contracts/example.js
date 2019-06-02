@@ -1,9 +1,8 @@
 describe('Routes Example', () => {
-  
   let data = [
     { id: 1, name: 'example name', age: 11 },
     { id: 2, name: 'example name', age: 22 },
-    { id: 3, name: 'example name', age: 33 },
+    { id: 3, name: 'example name', age: 33 }
   ]
 
   describe('Route GET /api/example', () => {
