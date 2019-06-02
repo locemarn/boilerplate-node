@@ -1,5 +1,5 @@
 --require @babel/register
---require test/contracts/helpers.js
+--require test/integration/helpers.js
 --reporter spec
 --slow 5000
 --exit

@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint server.js && ./node_modules/.bin/eslint src/**/*.js",
-    "lint:fix": "./node_modules/.bin/prettier-eslint 'server.js' --write && ./node_modules/.bin/prettier-eslint 'src/**/*.js' --write",
-    "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.js",
-    "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*.js",
-    "test:contracts": "NODE_ENV=test mocha --opts test/contracts/mocha.opts test/contracts/contracts/*.js",
+    "lint:fix": "./node_modules/.bin/prettier-eslint 'server.js' --write && ./node_modules/.bin/prettier-eslint 'src/**/*.js' && ./node_modules/.bin/prettier-eslint 'test/**/*.js' --write",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:integration": "NODE_ENV=test mocha --opts test/integration/mocha.opts test/integration/**/*.js",
+    "test:unit": "NODE_ENV=test mocha --opts test/unit/mocha.opts test/unit/**/*.js",
+    "test:contracts": "NODE_ENV=test mocha --opts test/contracts/mocha.opts test/contracts/contracts/*.js",
     "start": "nodemon --exec babel-node ./server.js"
   },
   "husky": {
