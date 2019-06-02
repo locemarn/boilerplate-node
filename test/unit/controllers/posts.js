@@ -1,5 +1,6 @@
 import PostsController from '../../../src/controllers/posts'
 import sinon from 'sinon'
+import Posts from '../../../src/models/post'
 
 describe('Controllers: Posts', () => {
   const defaultPost = [
@@ -12,17 +13,19 @@ describe('Controllers: Posts', () => {
   ]
 
   describe('getAll() posts', () => {
-    it('should return a list of posts', () => {
+    it('should call send a list of posts', () => {
       const request = {}
       const response = {
         send: sinon.spy()
       }
+      Posts.find = sinon.stub()
 
-      const postsController = new PostsController()
-      postsController.getAll(request, response)
+      Posts.find.withArgs({}).resolves(defaultPost)
 
-      expect(response.send.called).to.be.true
-      expect(response.send.calledWith(defaultPost)).to.be.true
+      const postController = new PostsController(Posts)
+      return postController.getAll(request, response).then(() => {
+        sinon.assert.calledWith(response.send, defaultPost)
+      })
     })
   })
 })
