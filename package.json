@@ -36,7 +36,7 @@
     "husky": "^2.3.0",
     "joi": "^14.3.1",
     "joi-assert": "0.0.3",
-    "lint-staged": "^8.1.7",
+    "lint-staged": "^13.1.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.1",
     "prettier-eslint": "^8.8.2",
